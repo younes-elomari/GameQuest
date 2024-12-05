@@ -1,7 +1,9 @@
-import React from "react";
+import { useState } from "react";
 import useGenres, { Genre } from "../hooks/useGenres";
 import {
+  Box,
   Button,
+  Heading,
   HStack,
   Image,
   List,
@@ -9,6 +11,8 @@ import {
   Spinner,
 } from "@chakra-ui/react";
 import getCroppedImageUrl from "../services/image-url";
+import { BsChevronDown } from "react-icons/bs";
+import { BsChevronUp } from "react-icons/bs";
 
 interface Props {
   selectedGenre: Genre | null;
@@ -16,34 +20,69 @@ interface Props {
 }
 
 const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
-  const { data: genres, error, isLoading } = useGenres();
+  const [show, setShow] = useState(false);
+
+  const { data, error, isLoading } = useGenres();
 
   if (error) return null;
 
   if (isLoading) return <Spinner />;
 
+  let genres = show ? data.slice(0, 3) : data.slice(0, 9);
+
   return (
-    <List>
-      {genres.map((genre) => (
-        <ListItem key={genre.id} paddingY="5px">
+    <>
+      <Heading fontSize="2xl" marginBottom={3}>
+        Genres
+      </Heading>
+      <List>
+        {genres.map((genre) => (
+          <ListItem key={genre.id} paddingY="3px">
+            <HStack>
+              <Image
+                src={getCroppedImageUrl(genre.image_background)}
+                boxSize="32px"
+                borderRadius={5}
+                objectFit="cover"
+              />
+              <Button
+                fontWeight={genre.id === selectedGenre?.id ? "bold" : "medium"}
+                onClick={() => onSelectGenre(genre)}
+                variant="link"
+                fontSize="md"
+                whiteSpace="normal"
+                textAlign="left"
+              >
+                {genre.name}
+              </Button>
+            </HStack>
+          </ListItem>
+        ))}
+        <ListItem paddingY="3px">
           <HStack>
-            <Image
-              src={getCroppedImageUrl(genre.image_background)}
+            <Box
+              cursor="pointer"
+              alignContent="center"
+              justifyItems="center"
+              borderRadius={5}
+              background="gray"
               boxSize="32px"
-              borderRadius={8}
-            />
+            >
+              {show ? <BsChevronDown /> : <BsChevronUp />}
+            </Box>
             <Button
-              fontWeight={genre.id === selectedGenre?.id ? "bold" : "medium"}
-              onClick={() => onSelectGenre(genre)}
+              onClick={() => setShow(!show)}
               variant="link"
               fontSize="md"
+              whiteSpace="normal"
+              textAlign="left"
             >
-              {genre.name}
+              {show ? "Show" : "Hide"}
             </Button>
           </HStack>
         </ListItem>
-      ))}
-    </List>
+      </List>
+    </>
   );
 };
 
