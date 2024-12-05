@@ -1,10 +1,11 @@
 import { useState } from "react";
 import useGenres, { Genre } from "../hooks/useGenres";
 import {
-  Box,
   Button,
+  ButtonGroup,
   Heading,
   HStack,
+  IconButton,
   Image,
   List,
   ListItem,
@@ -58,28 +59,19 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
             </HStack>
           </ListItem>
         ))}
-        <ListItem paddingY="3px">
-          <HStack>
-            <Box
-              cursor="pointer"
-              alignContent="center"
-              justifyItems="center"
-              borderRadius={5}
-              background="gray"
-              boxSize="32px"
-            >
-              {show ? <BsChevronDown /> : <BsChevronUp />}
-            </Box>
-            <Button
-              onClick={() => setShow(!show)}
-              variant="link"
-              fontSize="md"
-              whiteSpace="normal"
-              textAlign="left"
-            >
-              {show ? "Show" : "Hide"}
-            </Button>
-          </HStack>
+        <ListItem paddingY="5px">
+          <ButtonGroup
+            onClick={() => setShow(!show)}
+            size="sm"
+            isAttached
+            variant="outline"
+          >
+            <IconButton
+              aria-label="Add to friends"
+              icon={show ? <BsChevronDown /> : <BsChevronUp />}
+            />
+            <Button>{show ? "Show" : "Hide"}</Button>
+          </ButtonGroup>
         </ListItem>
       </List>
     </>
