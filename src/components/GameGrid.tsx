@@ -16,13 +16,14 @@ const GameGrid = ({ gameQuery }: Props) => {
 
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
+  if(error) return <ErrorMessage error={error.message} />;
+
   return (
     <Box paddingX={2}>
-      {error && <ErrorMessage error={error} />}
       <SimpleGrid columns={{ sm: 2, md: 3, lg: 4 }} paddingY={5} gap={4}>
         {isLoading &&
           skeletons.map((skeleton) => <GameCardSkeleton key={skeleton} />)}
-        {games.map((game) => (
+        {games?.results.map((game) => (
           <GameCard key={game.id} game={game} />
         ))}
       </SimpleGrid>

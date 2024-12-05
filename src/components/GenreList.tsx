@@ -30,7 +30,7 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
 
   if (isLoading) return <Spinner />;
 
-  let genres = show ? data.slice(0, 3) : data.slice(0, 9);
+  let genres = data ? show ? data.slice(0, 3) : data.slice(0, 9) : [];
 
   return (
     <Box>
