@@ -1,6 +1,7 @@
 import { useState } from "react";
 import useGenres, { Genre } from "../hooks/useGenres";
 import {
+  Box,
   Button,
   ButtonGroup,
   Heading,
@@ -32,7 +33,7 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
   let genres = show ? data.slice(0, 3) : data.slice(0, 9);
 
   return (
-    <>
+    <Box>
       <Heading fontSize="2xl" marginBottom={3}>
         Genres
       </Heading>
@@ -74,7 +75,7 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
           </ButtonGroup>
         </ListItem>
       </List>
-    </>
+    </Box>
   );
 };
 

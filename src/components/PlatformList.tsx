@@ -10,6 +10,7 @@ import {
   Icon,
   ButtonGroup,
   IconButton,
+  Box,
 } from "@chakra-ui/react";
 import {
   FaWindows,
@@ -55,7 +56,7 @@ const PlatformList = ({ selectedPlatform, onSelectPlatform }: Props) => {
   let platforms = show ? data.slice(0, 3) : data.slice(0, 7);
 
   return (
-    <>
+    <Box>
       <Heading fontSize="2xl" marginBottom={3}>
         Platforms
       </Heading>
@@ -101,7 +102,7 @@ const PlatformList = ({ selectedPlatform, onSelectPlatform }: Props) => {
           </ButtonGroup>
         </ListItem>
       </List>
-    </>
+    </Box>
   );
 };
 

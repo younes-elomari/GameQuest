@@ -1,5 +1,4 @@
-import { Box, Flex, Heading, HStack, Image, Text } from "@chakra-ui/react";
-import logo from "../assets/logo.webp";
+import { Flex, Heading, HStack } from "@chakra-ui/react";
 import SearchInput from "./SearchInput";
 
 interface Props {
