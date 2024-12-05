@@ -1,14 +1,18 @@
-import { HStack, Image, Text } from "@chakra-ui/react";
+import { Box, Flex, HStack, Image, Text } from "@chakra-ui/react";
 import logo from "../assets/logo.webp";
+import SearchInput from "./SearchInput";
 
 const NavBar = () => {
   return (
-    <HStack spacing={2}>
-      <Image src={logo} alt="website-logo" boxSize="60px" />
-      <Text size="xl" as="b">
-        Gamequest
-      </Text>
-    </HStack>
+    <Flex align='center' gap={10}>
+      <HStack spacing={2}>
+        <Image src={logo} alt="website-logo" boxSize="60px" />
+        <Text size="xl" as="b">
+          Gamequest
+        </Text>
+      </HStack>
+      <SearchInput />
+    </Flex>
   );
 };
 
