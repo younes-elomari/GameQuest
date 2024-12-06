@@ -25,6 +25,7 @@ import useGameQueryStore from "../store";
 import SectionHeadingMotion from "./motions/SectionHeadingMotion";
 import ImageIconMotion from "./motions/ImageIconMotion";
 import ButtonMotion from "./motions/ButtonMotion";
+import { Link } from "react-router-dom";
 
 const PlatformList = () => {
   const selectedPlatformId = useGameQueryStore((s) => s.gameQuery.platformId);
@@ -47,7 +48,7 @@ const PlatformList = () => {
 
   if (isLoading) return <Spinner />;
 
-  let platforms =  data.slice(0, 5);
+  let platforms = data.slice(0, 5);
 
   return (
     <Box>
@@ -60,31 +61,33 @@ const PlatformList = () => {
       <List>
         {platforms.map((platform) => (
           <ListItem key={platform.id} paddingY="3px">
-            <HStack>
-              <ImageIconMotion>
-                <Icon
-                  alignSelf="center"
-                  justifySelf="center"
-                  as={iconMap[platform.slug]}
-                  color="gray.200"
-                  boxSize="30px"                  
-                />
-              </ImageIconMotion>
-              <ButtonMotion>
-                <Button
-                  fontWeight={
-                    platform.id === selectedPlatformId ? "bold" : "medium"
-                  }
-                  onClick={() => setSelectedPlatformId(platform.id)}
-                  variant="link"
-                  fontSize="md"
-                  whiteSpace="normal"
-                  textAlign="left"
-                >
-                  {platform.name}
-                </Button>
-              </ButtonMotion>
-            </HStack>
+            <Link to="/">
+              <HStack>
+                <ImageIconMotion>
+                  <Icon
+                    alignSelf="center"
+                    justifySelf="center"
+                    as={iconMap[platform.slug]}
+                    color="gray.200"
+                    boxSize="30px"
+                  />
+                </ImageIconMotion>
+                <ButtonMotion>
+                  <Button
+                    fontWeight={
+                      platform.id === selectedPlatformId ? "bold" : "medium"
+                    }
+                    onClick={() => setSelectedPlatformId(platform.id)}
+                    variant="link"
+                    fontSize="md"
+                    whiteSpace="normal"
+                    textAlign="left"
+                  >
+                    {platform.name}
+                  </Button>
+                </ButtonMotion>
+              </HStack>
+            </Link>
           </ListItem>
         ))}
       </List>
