@@ -27,6 +27,9 @@ import { SiNintendo } from "react-icons/si";
 import { BsGlobe } from "react-icons/bs";
 import { IconType } from "react-icons";
 import useGameQueryStore from "../store";
+import SectionHeadingMotion from "./motions/SectionHeadingMotion";
+import ImageIconMotion from "./motions/ImageIconMotion";
+import ButtonMotion from "./motions/ButtonMotion";
 
 const PlatformList = () => {
   const selectedPlatformId = useGameQueryStore((s) => s.gameQuery.platformId);
@@ -56,50 +59,58 @@ const PlatformList = () => {
 
   return (
     <Box>
-      <Heading fontSize="2xl" marginBottom={3}>
-        Platforms
-      </Heading>
+      <SectionHeadingMotion>
+        <Heading fontSize="2xl" marginBottom={3}>
+          Platforms
+        </Heading>
+      </SectionHeadingMotion>
 
       <List>
         {platforms.map((platform) => (
           <ListItem key={platform.id} paddingY="3px">
             <HStack>
-              <Icon
-                alignSelf="center"
-                justifySelf="center"
-                as={iconMap[platform.slug]}
-                color="gray.900"
-                boxSize="30px"
-              />
-              <Button
-                fontWeight={
-                  platform.id === selectedPlatformId ? "bold" : "medium"
-                }
-                onClick={() => setSelectedPlatformId(platform.id)}
-                variant="link"
-                fontSize="md"
-                whiteSpace="normal"
-                textAlign="left"
-              >
-                {platform.name}
-              </Button>
+              <ImageIconMotion>
+                <Icon
+                  alignSelf="center"
+                  justifySelf="center"
+                  as={iconMap[platform.slug]}
+                  color="gray.900"
+                  boxSize="30px"
+                />
+              </ImageIconMotion>
+              <ButtonMotion>
+                <Button
+                  fontWeight={
+                    platform.id === selectedPlatformId ? "bold" : "medium"
+                  }
+                  onClick={() => setSelectedPlatformId(platform.id)}
+                  variant="link"
+                  fontSize="md"
+                  whiteSpace="normal"
+                  textAlign="left"
+                >
+                  {platform.name}
+                </Button>
+              </ButtonMotion>
             </HStack>
           </ListItem>
         ))}
-        <ListItem paddingY="5px">
-          <ButtonGroup
-            onClick={() => setShow(!show)}
-            size="sm"
-            isAttached
-            variant="outline"
-          >
-            <IconButton
-              aria-label="Add to friends"
-              icon={show ? <BsChevronDown /> : <BsChevronUp />}
-            />
-            <Button>{show ? "Show" : "Hide"}</Button>
-          </ButtonGroup>
-        </ListItem>
+        <SectionHeadingMotion>
+          <ListItem paddingY="5px">
+            <ButtonGroup
+              onClick={() => setShow(!show)}
+              size="sm"
+              isAttached
+              variant="outline"
+            >
+              <IconButton
+                aria-label="Add to friends"
+                icon={show ? <BsChevronDown /> : <BsChevronUp />}
+              />
+              <Button>{show ? "Show" : "Hide"}</Button>
+            </ButtonGroup>
+          </ListItem>
+        </SectionHeadingMotion>
       </List>
     </Box>
   );

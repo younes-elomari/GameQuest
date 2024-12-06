@@ -2,13 +2,18 @@ import { Box, Grid, GridItem, Show, Stack } from "@chakra-ui/react";
 import GameHeading from "../components/GameHeading";
 import SortSelector from "../components/SortSelector";
 import GameGrid from "../components/GameGrid";
+import MainHeadingMotion from "../components/motions/MainHeadingMotion";
 
 function App() {
   return (
     <Box>
       <Box paddingY={2} paddingX={2}>
-        <GameHeading />
-        <SortSelector />
+        <MainHeadingMotion>
+          <GameHeading />
+        </MainHeadingMotion>
+        <MainHeadingMotion>
+          <SortSelector />
+        </MainHeadingMotion>
       </Box>
       <GameGrid />
     </Box>

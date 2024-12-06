@@ -16,6 +16,10 @@ import getCroppedImageUrl from "../services/image-url";
 import { BsChevronDown } from "react-icons/bs";
 import { BsChevronUp } from "react-icons/bs";
 import useGameQueryStore from "../store";
+import { motion } from "framer-motion";
+import SectionHeadingMotion from "./motions/SectionHeadingMotion";
+import ImageIconMotion from "./motions/ImageIconMotion";
+import ButtonMotion from "./motions/ButtonMotion";
 
 const GenreList = () => {
   const selectedGenreId = useGameQueryStore((s) => s.gameQuery.genreId);
@@ -32,46 +36,54 @@ const GenreList = () => {
 
   return (
     <Box>
-      <Heading fontSize="2xl" marginBottom={3}>
-        Genres
-      </Heading>
+      <SectionHeadingMotion>
+        <Heading fontSize="2xl" marginBottom={3}>
+          Genres
+        </Heading>
+      </SectionHeadingMotion>
       <List>
         {genres.map((genre) => (
           <ListItem key={genre.id} paddingY="3px">
             <HStack>
-              <Image
-                src={getCroppedImageUrl(genre.image_background)}
-                boxSize="32px"
-                borderRadius={5}
-                objectFit="cover"
-              />
-              <Button
-                fontWeight={genre.id === selectedGenreId ? "bold" : "medium"}
-                onClick={() => setGenreId(genre.id)}
-                variant="link"
-                fontSize="md"
-                whiteSpace="normal"
-                textAlign="left"
-              >
-                {genre.name}
-              </Button>
+              <ImageIconMotion>
+                <Image
+                  src={getCroppedImageUrl(genre.image_background)}
+                  boxSize="32px"
+                  borderRadius={5}
+                  objectFit="cover"
+                />
+              </ImageIconMotion>
+              <ButtonMotion>
+                <Button
+                  fontWeight={genre.id === selectedGenreId ? "bold" : "medium"}
+                  onClick={() => setGenreId(genre.id)}
+                  variant="link"
+                  fontSize="md"
+                  whiteSpace="normal"
+                  textAlign="left"
+                >
+                  {genre.name}
+                </Button>
+              </ButtonMotion>
             </HStack>
           </ListItem>
         ))}
-        <ListItem paddingY="5px">
-          <ButtonGroup
-            onClick={() => setShow(!show)}
-            size="sm"
-            isAttached
-            variant="outline"
-          >
-            <IconButton
-              aria-label="Add to friends"
-              icon={show ? <BsChevronDown /> : <BsChevronUp />}
-            />
-            <Button>{show ? "Show" : "Hide"}</Button>
-          </ButtonGroup>
-        </ListItem>
+        <SectionHeadingMotion>
+          <ListItem paddingY="5px">
+            <ButtonGroup
+              onClick={() => setShow(!show)}
+              size="sm"
+              isAttached
+              variant="outline"
+            >
+              <IconButton
+                aria-label="Add to friends"
+                icon={show ? <BsChevronDown /> : <BsChevronUp />}
+              />
+              <Button>{show ? "Show" : "Hide"}</Button>
+            </ButtonGroup>
+          </ListItem>
+        </SectionHeadingMotion>
       </List>
     </Box>
   );
