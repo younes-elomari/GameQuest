@@ -1,5 +1,4 @@
-
-import Genre from "./genre";
+import Genre from "./Genre";
 import Platform from "./Platform";
 import Publisher from "./Publisher";
 

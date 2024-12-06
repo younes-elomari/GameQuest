@@ -11,7 +11,7 @@ import Emoji from "./Emoji";
 import { Link } from "react-router-dom";
 import SectionHeadingMotion from "./motions/SectionHeadingMotion";
 import FadeMotion from "./motions/FadeMotion";
-import Game from "../entities/game";
+import Game from "../entities/Game";
 
 interface Props {
   game: Game;
