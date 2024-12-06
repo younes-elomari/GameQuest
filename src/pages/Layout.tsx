@@ -1,15 +1,11 @@
+import NavBar from "../components/NavBar";
+import { Outlet } from "react-router-dom";
 import { Box, Grid, GridItem, Show, Stack } from "@chakra-ui/react";
-import NavBar from "./components/NavBar";
-import GameGrid from "./components/GameGrid";
-import GenreList from "./components/GenreList";
-import PlatformList from "./components/PlatformList";
-import SortSelector from "./components/SortSelector";
-import GameHeading from "./components/GameHeading";
+import GenreList from "../components/GenreList";
+import PlatformList from "../components/PlatformList";
 
-
-function App() {
-  return (
-    <Grid
+const layout = () => {
+    return <Grid
       templateAreas={{
         base: `'nav' 'main'`,
         md: `'nav nav' 'aside main'`,
@@ -33,16 +29,21 @@ function App() {
         </GridItem>
       </Show>
       <GridItem area="main">
-        <Box paddingY={2} paddingX={2}>
+        <Outlet />
+        {/* <Box paddingY={2} paddingX={2}>
           <GameHeading />
-          <SortSelector
-            
-          />
+          <SortSelector />
         </Box>
-        <GameGrid />
+        <GameGrid /> */}
       </GridItem>
-    </Grid>
-  );
-}
+    </Grid>;
 
-export default App;
+//   return (
+//     <>
+//       <NavBar />
+//       <Outlet />
+//     </>
+//   );
+};
+
+export default layout;
