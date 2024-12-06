@@ -15,7 +15,7 @@ const GameAttributes = ({ game }: Props) => {
           <Text
             fontSize="sm"
             fontWeight="bold"
-            color="gray.700"
+            color="gray.500"
             key={platform.id}
           >
             {platform.name}
@@ -27,14 +27,14 @@ const GameAttributes = ({ game }: Props) => {
       </DefinitionItem>
       <DefinitionItem term="Genres">
         {game.genres?.map((g) => (
-          <Text fontSize="sm" fontWeight="bold" color="gray.700" key={g.id}>
+          <Text fontSize="sm" fontWeight="bold" color="gray.500" key={g.id}>
             {g.name}
           </Text>
         ))}
       </DefinitionItem>
       <DefinitionItem term="Publishers">
         {game.publishers?.map((p) => (
-          <Text fontSize="sm" fontWeight="bold" color="gray.700" key={p.id}>
+          <Text fontSize="sm" fontWeight="bold" color="gray.500" key={p.id}>
             {p.name}
           </Text>
         ))}

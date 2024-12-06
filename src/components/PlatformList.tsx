@@ -71,8 +71,8 @@ const PlatformList = () => {
                   alignSelf="center"
                   justifySelf="center"
                   as={iconMap[platform.slug]}
-                  color="gray.900"
-                  boxSize="30px"
+                  color="gray.200"
+                  boxSize="30px"                  
                 />
               </ImageIconMotion>
               <ButtonMotion>
