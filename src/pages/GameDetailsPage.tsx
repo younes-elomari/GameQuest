@@ -11,6 +11,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import ExpendableText from "../components/ExpendableText";
+import GameAttributes from "../components/GameAttributes";
 // import DefinitionItem from "../components/DefinitionItem";
 // import CriticScore from "../components/CriticScore";
 // import GameAttributes from "../components/GameAttributes";
@@ -31,7 +32,7 @@ const GameDetailPage = () => {
         <Stack spacing={3}>
           <Heading>{game.name}</Heading>
           <ExpendableText>{game.description_raw}</ExpendableText>
-          {/* <GameAttributes game={game} /> */}
+          <GameAttributes game={game} />
         </Stack>
       </GridItem>
       <GridItem>
