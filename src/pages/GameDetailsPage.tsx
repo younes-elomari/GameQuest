@@ -13,6 +13,7 @@ import {
 import ExpendableText from "../components/ExpendableText";
 import GameAttributes from "../components/GameAttributes";
 import GameTrailer from "../components/GameTrailer";
+import GameScreenshots from "../components/GameScreenShots";
 // import DefinitionItem from "../components/DefinitionItem";
 // import CriticScore from "../components/CriticScore";
 // import GameAttributes from "../components/GameAttributes";
@@ -28,20 +29,21 @@ const GameDetailPage = () => {
   if (error || !game) throw error;
 
   return (
-    <SimpleGrid columns={{ base: 1, md: 2 }} spacing={5}>
-      <GridItem>
-        <Stack spacing={3}>
-          <Heading>{game.name}</Heading>
-          <ExpendableText>{game.description_raw}</ExpendableText>
-          <GameAttributes game={game} />
-        </Stack>
-      </GridItem>
-      <GridItem>
-        <GameTrailer gameId={game.id} />
-        
-        {/* <GameScreenshots gameId={game.id} /> */}
-      </GridItem>
-    </SimpleGrid>
+    <Box>
+      <SimpleGrid columns={{ base: 1, md: 2 }} spacing={5}>
+        <GridItem>
+          <Stack spacing={3}>
+            <Heading>{game.name}</Heading>
+            <ExpendableText>{game.description_raw}</ExpendableText>
+            <GameAttributes game={game} />
+          </Stack>
+        </GridItem>
+        <GridItem>
+          <GameScreenshots gameId={game.id} />
+        </GridItem>
+      </SimpleGrid>
+      <GameTrailer gameId={game.id} />
+    </Box>
   );
 };
 
