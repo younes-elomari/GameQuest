@@ -12,6 +12,7 @@ import {
 } from "@chakra-ui/react";
 import ExpendableText from "../components/ExpendableText";
 import GameAttributes from "../components/GameAttributes";
+import GameTrailer from "../components/GameTrailer";
 // import DefinitionItem from "../components/DefinitionItem";
 // import CriticScore from "../components/CriticScore";
 // import GameAttributes from "../components/GameAttributes";
@@ -36,8 +37,9 @@ const GameDetailPage = () => {
         </Stack>
       </GridItem>
       <GridItem>
-        {/* <GameTrailer gameId={game.id} />
-        <GameScreenshots gameId={game.id} /> */}
+        <GameTrailer gameId={game.id} />
+        
+        {/* <GameScreenshots gameId={game.id} /> */}
       </GridItem>
     </SimpleGrid>
   );
