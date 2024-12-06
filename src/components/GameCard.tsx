@@ -13,6 +13,7 @@ import CriticScore from "./CriticScore";
 import getCroppedImageUrl from "../services/image-url";
 import GameCardContainer from "./GameCardContainer";
 import Emoji from "./Emoji";
+import { Link } from "react-router-dom";
 
 interface Props {
   game: Game;
@@ -22,16 +23,18 @@ const GameCard = ({ game }: Props) => {
   return (
     <GameCardContainer>
       <Box>
-        <Image
-          _hover={{
-            filter: "blur(1px)",
-            boxShadow: "md",
-          }}
-          transition=".3s"
-          cursor="pointer"
-          src={getCroppedImageUrl(game.background_image)}
-          alt={game.name}
-        />
+        <Link to={'/games/' + game.slug}>
+          <Image
+            _hover={{
+              filter: "blur(1px)",
+              boxShadow: "md",
+            }}
+            transition=".3s"
+            cursor="pointer"
+            src={getCroppedImageUrl(game.background_image)}
+            alt={game.name}
+          />
+        </Link>
         <Box paddingX={3} paddingY={5}>
           <Heading fontSize="1xl">{game.name}</Heading>
           <Flex
