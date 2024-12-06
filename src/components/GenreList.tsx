@@ -1,22 +1,16 @@
-import { useState } from "react";
 import useGenres from "../hooks/useGenres";
 import {
   Box,
   Button,
-  ButtonGroup,
   Heading,
   HStack,
-  IconButton,
   Image,
   List,
   ListItem,
   Spinner,
 } from "@chakra-ui/react";
 import getCroppedImageUrl from "../services/image-url";
-import { BsChevronDown } from "react-icons/bs";
-import { BsChevronUp } from "react-icons/bs";
 import useGameQueryStore from "../store";
-import { motion } from "framer-motion";
 import SectionHeadingMotion from "./motions/SectionHeadingMotion";
 import ImageIconMotion from "./motions/ImageIconMotion";
 import ButtonMotion from "./motions/ButtonMotion";

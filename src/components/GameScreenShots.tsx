@@ -1,6 +1,6 @@
 import { Box, Image, SimpleGrid, Stack } from "@chakra-ui/react";
 import useScreenshots from "../hooks/useScreenshots";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Screenshot from "../entities/Screenshot";
 
 interface Props {
@@ -16,31 +16,31 @@ const GameScreenshots = ({ gameId }: Props) => {
   if (error) throw error;
 
   return (
-      <Stack spacing={3}>
-        {data?.results[0] && (
-          <Image
-            width="100%"
-            borderRadius={5}
-            key={image?.id}
-            src={image?.image ? image?.image : data.results[0].image}
-          />
-        )}
-        <SimpleGrid columns={{ base: 2, md: 3 }} spacing={3}>
-          {data?.results.map((item) => (
-            <Box overflow="hidden" borderRadius={5}>
-              <Image
-                onClick={() => setImage(item)}
-                cursor="pointer"
-                _hover={{
-                  transform: "scale(1.1)",
-                }}
-                key={item.id}
-                src={item.image}
-              />
-            </Box>
-          ))}
-        </SimpleGrid>
-      </Stack>
+    <Stack spacing={3}>
+      {data?.results[0] && (
+        <Image
+          width="100%"
+          borderRadius={5}
+          key={image?.id}
+          src={image?.image ? image?.image : data.results[0].image}
+        />
+      )}
+      <SimpleGrid columns={{ base: 2, md: 3 }} spacing={3}>
+        {data?.results.map((item) => (
+          <Box overflow="hidden" borderRadius={5}>
+            <Image
+              onClick={() => setImage(item)}
+              cursor="pointer"
+              _hover={{
+                transform: "scale(1.1)",
+              }}
+              key={item.id}
+              src={item.image}
+            />
+          </Box>
+        ))}
+      </SimpleGrid>
+    </Stack>
   );
 };
 

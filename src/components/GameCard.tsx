@@ -1,22 +1,17 @@
 import {
   Box,
-  Card,
-  CardBody,
   Flex,
   Heading,
-  HStack,
   Image,
 } from "@chakra-ui/react";
-import { Game } from "../hooks/useGames";
 import PlatformIconList from "./PlatformIconList";
-import CriticScore from "./CriticScore";
 import getCroppedImageUrl from "../services/image-url";
 import GameCardContainer from "./GameCardContainer";
 import Emoji from "./Emoji";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
 import SectionHeadingMotion from "./motions/SectionHeadingMotion";
 import FadeMotion from "./motions/FadeMotion";
+import Game from "../entities/game";
 
 interface Props {
   game: Game;

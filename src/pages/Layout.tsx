@@ -22,9 +22,9 @@ const layout = () => {
         }}
       >
         <GridItem area="nav">
-          <Stack paddingY={5}>
+          <Box paddingY={5}>
             <NavBar />
-          </Stack>
+          </Box>
         </GridItem>
         <Show above="md">
           <GridItem area="aside" paddingY={{ base: 3, lg: 6 }}>

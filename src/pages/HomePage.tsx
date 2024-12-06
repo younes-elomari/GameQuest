@@ -1,4 +1,4 @@
-import { Box, Stack } from "@chakra-ui/react";
+import { Stack } from "@chakra-ui/react";
 import GameHeading from "../components/GameHeading";
 import SortSelector from "../components/SortSelector";
 import GameGrid from "../components/GameGrid";

@@ -1,5 +1,4 @@
-import { useState } from "react";
-import usePlatforms, { Platform } from "../hooks/usePlatforms";
+import usePlatforms from "../hooks/usePlatforms";
 import {
   Heading,
   HStack,
@@ -8,8 +7,6 @@ import {
   Spinner,
   Button,
   Icon,
-  ButtonGroup,
-  IconButton,
   Box,
 } from "@chakra-ui/react";
 import {
@@ -20,8 +17,6 @@ import {
   FaLinux,
   FaAndroid,
 } from "react-icons/fa";
-import { BsChevronDown } from "react-icons/bs";
-import { BsChevronUp } from "react-icons/bs";
 import { MdPhoneIphone } from "react-icons/md";
 import { SiNintendo } from "react-icons/si";
 import { BsGlobe } from "react-icons/bs";

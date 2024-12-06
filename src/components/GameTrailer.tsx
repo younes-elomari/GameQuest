@@ -1,4 +1,3 @@
-import { Box, Text } from "@chakra-ui/react";
 import useTrailers from "../hooks/useTrailers";
 
 interface Props {
