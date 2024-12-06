@@ -2,7 +2,6 @@ import {
   Flex,
   Heading,
   HStack,
-  useBreakpoint,
   useBreakpointValue,
 } from "@chakra-ui/react";
 import SearchInput from "./SearchInput";

@@ -24,7 +24,6 @@ import ButtonMotion from "./motions/ButtonMotion";
 const GenreList = () => {
   const selectedGenreId = useGameQueryStore((s) => s.gameQuery.genreId);
   const setGenreId = useGameQueryStore((s) => s.setGenreId);
-  const [show, setShow] = useState(false);
 
   const { data, error, isLoading } = useGenres();
 
@@ -32,7 +31,7 @@ const GenreList = () => {
 
   if (isLoading) return <Spinner />;
 
-  let genres = data ? (show ? data.slice(0, 9) : data.slice(0, 3)) : [];
+  let genres = data.slice(0, 7);
 
   return (
     <Box>
@@ -68,22 +67,6 @@ const GenreList = () => {
             </HStack>
           </ListItem>
         ))}
-        <SectionHeadingMotion>
-          <ListItem paddingY="5px">
-            <ButtonGroup
-              onClick={() => setShow(!show)}
-              size="sm"
-              isAttached
-              variant="outline"
-            >
-              <IconButton
-                aria-label="Add to friends"
-                icon={show ? <BsChevronUp /> : <BsChevronDown />}
-              />
-              <Button>{show ? "Hide" : "Show"}</Button>
-            </ButtonGroup>
-          </ListItem>
-        </SectionHeadingMotion>
       </List>
     </Box>
   );

@@ -46,16 +46,13 @@ const PlatformList = () => {
     ios: MdPhoneIphone,
     web: BsGlobe,
   };
-
-  const [show, setShow] = useState(false);
-
   const { data, error, isLoading } = usePlatforms();
 
   if (error) return null;
 
   if (isLoading) return <Spinner />;
 
-  let platforms = show ? data.slice(0, 3) : data.slice(0, 7);
+  let platforms =  data.slice(0, 5);
 
   return (
     <Box>
@@ -95,22 +92,6 @@ const PlatformList = () => {
             </HStack>
           </ListItem>
         ))}
-        <SectionHeadingMotion>
-          <ListItem paddingY="5px">
-            <ButtonGroup
-              onClick={() => setShow(!show)}
-              size="sm"
-              isAttached
-              variant="outline"
-            >
-              <IconButton
-                aria-label="Add to friends"
-                icon={show ? <BsChevronDown /> : <BsChevronUp />}
-              />
-              <Button>{show ? "Show" : "Hide"}</Button>
-            </ButtonGroup>
-          </ListItem>
-        </SectionHeadingMotion>
       </List>
     </Box>
   );

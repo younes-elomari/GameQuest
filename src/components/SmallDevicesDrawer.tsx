@@ -8,6 +8,7 @@ import {
   DrawerHeader,
   DrawerOverlay,
   Input,
+  Stack,
   useDisclosure,
 } from "@chakra-ui/react";
 import React from "react";
@@ -30,8 +31,10 @@ const SmallDevicesDrawer = () => {
           <DrawerCloseButton />
 
           <DrawerBody>
-            <GenreList />
-            <PlatformList />
+            <Stack spacing={5}>
+              <GenreList />
+              <PlatformList />
+            </Stack>
           </DrawerBody>
         </DrawerContent>
       </Drawer>
