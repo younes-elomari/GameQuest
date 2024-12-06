@@ -7,9 +7,10 @@ import {
   Heading,
   SimpleGrid,
   Spinner,
+  Stack,
   Text,
 } from "@chakra-ui/react";
-// import ExpendableText from "../components/ExpendableText";
+import ExpendableText from "../components/ExpendableText";
 // import DefinitionItem from "../components/DefinitionItem";
 // import CriticScore from "../components/CriticScore";
 // import GameAttributes from "../components/GameAttributes";
@@ -27,9 +28,11 @@ const GameDetailPage = () => {
   return (
     <SimpleGrid columns={{ base: 1, md: 2 }} spacing={5}>
       <GridItem>
-        <Heading>{game.name}</Heading>
-        {/* <ExpendableText>{game.description_raw}</ExpendableText>
-        <GameAttributes game={game} /> */}
+        <Stack spacing={3}>
+          <Heading>{game.name}</Heading>
+          <ExpendableText>{game.description_raw}</ExpendableText>
+          {/* <GameAttributes game={game} /> */}
+        </Stack>
       </GridItem>
       <GridItem>
         {/* <GameTrailer gameId={game.id} />
