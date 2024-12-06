@@ -9,7 +9,6 @@ import ErrorMessage from "./ErrorMessage";
 import React from "react";
 import GameCardContainer from "./GameCardContainer";
 import { Spinner } from "@chakra-ui/react";
-import InfiniteScroll from "react-infinite-scroll-component";
 
 interface Props {
   gameQuery: GameQuery;
@@ -29,32 +28,34 @@ const GameGrid = ({ gameQuery }: Props) => {
 
   if (error) return <ErrorMessage error={error.message} />;
 
-  const fetchedGamesCount =
-    data?.pages.reduce((total, page) => total + page.results.length, 0) || 0;
-
   return (
-    <InfiniteScroll
-      dataLength={fetchedGamesCount}
-      hasMore={!!hasNextPage}
-      next={() => fetchNextPage()}
-      loader={<Spinner />}
-    >
-      <Box paddingX={2}>
-        <SimpleGrid columns={{ sm: 2, md: 3, lg: 4 }} paddingY={5} gap={4}>
-          {isLoading &&
-            skeletons.map((skeleton) => <GameCardSkeleton key={skeleton} />)}
-          {data?.pages.map((page, index) => (
-            <React.Fragment key={index}>
-              {page.results.map((game) => (
-                <GameCardContainer key={game.id}>
-                  <GameCard game={game} />
-                </GameCardContainer>
-              ))}
-            </React.Fragment>
-          ))}
-        </SimpleGrid>        
-      </Box>
-    </InfiniteScroll>
+    <Box paddingX={2}>
+      <SimpleGrid columns={{ sm: 2, md: 3, lg: 4 }} paddingY={5} gap={4}>
+        {isLoading &&
+          skeletons.map((skeleton) => <GameCardSkeleton key={skeleton} />)}
+        {data?.pages.map((page, index) => (
+          <React.Fragment key={index}>
+            {page.results.map((game) => (
+              <GameCardContainer key={game.id}>
+                <GameCard game={game} />
+              </GameCardContainer>
+            ))}
+          </React.Fragment>
+        ))}
+      </SimpleGrid>
+      {hasNextPage && (
+        <Button
+          alignSelf="center"
+          paddingX={10}
+          fontSize="13px"
+          onClick={() => fetchNextPage()}
+          marginY={5}
+        >
+          Load more
+          {isFetchingNextPage && <Spinner marginLeft={2} boxSize="22" />}
+        </Button>
+      )}
+    </Box>
   );
 };
 

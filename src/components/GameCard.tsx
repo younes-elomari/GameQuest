@@ -23,6 +23,12 @@ const GameCard = ({ game }: Props) => {
     <GameCardContainer>
       <Box>
         <Image
+          _hover={{
+            filter: "blur(1px)",
+            boxShadow: "md",
+          }}
+          transition=".3s"
+          cursor="pointer"
           src={getCroppedImageUrl(game.background_image)}
           alt={game.name}
         />
