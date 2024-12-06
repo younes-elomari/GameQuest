@@ -32,7 +32,7 @@ const GenreList = () => {
 
   if (isLoading) return <Spinner />;
 
-  let genres = data ? (show ? data.slice(0, 3) : data.slice(0, 9)) : [];
+  let genres = data ? (show ? data.slice(0, 9) : data.slice(0, 3)) : [];
 
   return (
     <Box>
@@ -78,9 +78,9 @@ const GenreList = () => {
             >
               <IconButton
                 aria-label="Add to friends"
-                icon={show ? <BsChevronDown /> : <BsChevronUp />}
+                icon={show ? <BsChevronUp /> : <BsChevronDown />}
               />
-              <Button>{show ? "Show" : "Hide"}</Button>
+              <Button>{show ? "Hide" : "Show"}</Button>
             </ButtonGroup>
           </ListItem>
         </SectionHeadingMotion>
