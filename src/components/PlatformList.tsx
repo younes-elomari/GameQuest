@@ -26,13 +26,12 @@ import { MdPhoneIphone } from "react-icons/md";
 import { SiNintendo } from "react-icons/si";
 import { BsGlobe } from "react-icons/bs";
 import { IconType } from "react-icons";
+import useGameQueryStore from "../store";
 
-interface Props {
-  selectedPlatform: Platform | null;
-  onSelectPlatform: (platform: Platform) => void;
-}
+const PlatformList = () => {
+  const selectedPlatformId = useGameQueryStore((s) => s.gameQuery.platformId);
+  const setSelectedPlatformId = useGameQueryStore((s) => s.setPlatformId);
 
-const PlatformList = ({ selectedPlatform, onSelectPlatform }: Props) => {
   const iconMap: { [key: string]: IconType } = {
     pc: FaWindows,
     playstation: FaPlaystation,
@@ -74,9 +73,9 @@ const PlatformList = ({ selectedPlatform, onSelectPlatform }: Props) => {
               />
               <Button
                 fontWeight={
-                  platform.id === selectedPlatform?.id ? "bold" : "medium"
+                  platform.id === selectedPlatformId ? "bold" : "medium"
                 }
-                onClick={() => onSelectPlatform(platform)}
+                onClick={() => setSelectedPlatformId(platform.id)}
                 variant="link"
                 fontSize="md"
                 whiteSpace="normal"

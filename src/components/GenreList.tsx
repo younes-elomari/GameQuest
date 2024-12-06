@@ -1,5 +1,5 @@
 import { useState } from "react";
-import useGenres, { Genre } from "../hooks/useGenres";
+import useGenres from "../hooks/useGenres";
 import {
   Box,
   Button,
@@ -15,13 +15,11 @@ import {
 import getCroppedImageUrl from "../services/image-url";
 import { BsChevronDown } from "react-icons/bs";
 import { BsChevronUp } from "react-icons/bs";
+import useGameQueryStore from "../store";
 
-interface Props {
-  selectedGenre: Genre | null;
-  onSelectGenre: (genre: Genre) => void;
-}
-
-const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
+const GenreList = () => {
+  const selectedGenreId = useGameQueryStore((s) => s.gameQuery.genreId);
+  const setGenreId = useGameQueryStore((s) => s.setGenreId);
   const [show, setShow] = useState(false);
 
   const { data, error, isLoading } = useGenres();
@@ -30,7 +28,7 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
 
   if (isLoading) return <Spinner />;
 
-  let genres = data ? show ? data.slice(0, 3) : data.slice(0, 9) : [];
+  let genres = data ? (show ? data.slice(0, 3) : data.slice(0, 9)) : [];
 
   return (
     <Box>
@@ -48,8 +46,8 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
                 objectFit="cover"
               />
               <Button
-                fontWeight={genre.id === selectedGenre?.id ? "bold" : "medium"}
-                onClick={() => onSelectGenre(genre)}
+                fontWeight={genre.id === selectedGenreId ? "bold" : "medium"}
+                onClick={() => setGenreId(genre.id)}
                 variant="link"
                 fontSize="md"
                 whiteSpace="normal"

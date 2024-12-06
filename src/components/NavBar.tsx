@@ -1,11 +1,7 @@
 import { Flex, Heading, HStack } from "@chakra-ui/react";
 import SearchInput from "./SearchInput";
 
-interface Props {
-  onSearch: (searchText: string) => void;
-}
-
-const NavBar = ({ onSearch }: Props) => {
+const NavBar = () => {
   return (
     <Flex align="center" gap={5}>
       <HStack spacing={2}>
@@ -18,7 +14,7 @@ const NavBar = ({ onSearch }: Props) => {
           </Heading>
         </Flex>
       </HStack>
-      <SearchInput onSearch={onSearch} />
+      <SearchInput />
     </Flex>
   );
 };
