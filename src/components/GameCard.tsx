@@ -1,9 +1,4 @@
-import {
-  Box,
-  Flex,
-  Heading,
-  Image,
-} from "@chakra-ui/react";
+import { Box, Card, Flex, Heading, Image } from "@chakra-ui/react";
 import PlatformIconList from "./PlatformIconList";
 import getCroppedImageUrl from "../services/image-url";
 import GameCardContainer from "./GameCardContainer";
@@ -20,7 +15,7 @@ interface Props {
 const GameCard = ({ game }: Props) => {
   return (
     <GameCardContainer>
-      <Box>
+      <Card>
         <Link to={"/games/" + game.slug}>
           <FadeMotion>
             <Image
@@ -51,7 +46,7 @@ const GameCard = ({ game }: Props) => {
             </Flex>
           </Box>
         </SectionHeadingMotion>
-      </Box>
+      </Card>
     </GameCardContainer>
   );
 };
